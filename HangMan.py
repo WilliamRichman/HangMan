@@ -51,9 +51,9 @@ def displayBoard(missedLetters, correctLetters, secretWord):
     print(HANGMAN_PICS[len(missedLetters)])
     print()
 
-    print('Missed letters: ', end=' ')
+    print('Missed letters:', end ='')
     for letter in missedLetters:
-        print(letter, end=' ')
+        print(letter, end ='')
     print()
 
     blanks = '_' * len(secretWord)
@@ -63,7 +63,7 @@ def displayBoard(missedLetters, correctLetters, secretWord):
             blanks = blanks[:i] + secretWord[i] + blanks[i+1:]
 
     for letter in blanks:
-        print(letter, end=' ')
+        print(letter, end ='')
     print()
     
 def getGuess(alreadyGuessed):
@@ -107,22 +107,22 @@ while True:
         if foundAllLetters:
             print(f"Yes! You have guessed all the letter in the word {secretWord} Great job you win!")
             gameIsDone = True
-        else:
-            missedLetters = missedLetters + guess
+    else:
+        missedLetters = missedLetters + guess
 
-            if len(missedLetters == len(HANGMAN_PICS)) -1:
-                displayBoard(missedLetters, correctLetters, secretWord)
-                print(f"You ran out of guesses. The answer was {secretWord} better luck next time!")
-                gameIsDone = True
+        if len(missedLetters) == len(HANGMAN_PICS) -1:
+            displayBoard(missedLetters, correctLetters, secretWord)
+            print(f"You ran out of guesses. The answer was {secretWord} better luck next time!")
+            gameIsDone = True
 
-            if gameIsDone:
-                if playAgain():
-                    missedLetters = ''
-                    correctLetters = ''
-                    gameIsDone = False
-                    secretWord = getRandomWord(words)
-                else:
-                    break
+        if gameIsDone:
+            if playAgain():
+                missedLetters = ''
+                correctLetters = ''
+                gameIsDone = False
+                secretWord = getRandomWord(words)
+            else:
+                break
 
 
 
